@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shaaf Ahmed | Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+:root {
+    --bg-main: #040407;
+    --bg-card: rgba(18, 21, 32, 0.85);
+    --border-card: rgba(255, 255, 255, 0.1);
+    --accent-blue: #3b82f6;
+    --accent-cyan: #06b6d4;
+    --accent-purple: #8b5cf6;
+    --accent-green: #10b981;
+    --text-primary: #ffffff;
+    --text-secondary: #cbd5e1;
+    --text-muted: #94a3b8;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+    padding: 50px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bg-glow-1, .bg-glow-2 {
+    position: fixed;
+    width: 450px;
+    height: 450px;
+    border-radius: 50%;
+    filter: blur(150px);
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.3;
+}
+
+.bg-glow-1 {
+    top: -100px;
+    left: -100px;
+    background: radial-gradient(circle, var(--accent-blue), transparent 70%);
+}
+
+.bg-glow-2 {
+    bottom: -100px;
+    right: -100px;
+    background: radial-gradient(circle, var(--accent-purple), transparent 70%);
+}
+
+.portfolio-container {
+    width: min(100%, 800px);
+    background: var(--bg-card);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid var(--border-card);
+    border-radius: 36px;
+    padding: 45px 32px;
+    position: relative;
+    z-index: 10;
+    box-shadow: 0 35px 70px rgba(0, 0, 0, 0.8);
+    animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(35px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.profile-header {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: rgba(59, 130, 246, 0.12);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    border-radius: 50px;
+    color: var(--accent-cyan);
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    animation: pulseBadge 2.5s infinite alternate;
+}
+
+@keyframes pulseBadge {
+    0% { border-color: rgba(59, 130, 246, 0.3); box-shadow: 0 0 0 rgba(59, 130, 246, 0); }
+    100% { border-color: rgba(6, 182, 212, 0.6); box-shadow: 0 0 18px rgba(6, 182, 212, 0.25); }
+}
+
+.title {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(38px, 7vw, 54px);
+    font-weight: 800;
+    background: linear-gradient(135deg, #ffffff 20%, #cbd5e1 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 10px;
+}
+
+.subtitle-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 17px;
+    color: var(--accent-cyan);
+    font-weight: 700;
+}
+
+.step-section {
+    margin-bottom: 30px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 24px;
+    padding: 24px;
+    transition: transform 0.3s ease;
+}
+
+.step-section:hover {
+    border-color: rgba(59, 130, 246, 0.3);
+    background: rgba(255, 255, 255, 0.035);
+}
+
+.section-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.section-title i { color: var(--accent-blue); font-size: 20px; }
+
+.grid-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+@media (max-width: 600px) {
+    .grid-cards { grid-template-columns: 1fr; }
+}
+
+.info-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border-card);
+    border-radius: 18px;
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    transition: all 0.3s ease;
+}
+
+.info-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(59, 130, 246, 0.4);
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.icon-box {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    background: rgba(59, 130, 246, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 19px;
+    color: var(--accent-cyan);
+    flex-shrink: 0;
+}
+
+.info-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.label {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 3px;
+}
+
+.val {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.academic-card {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.06), rgba(16, 185, 129, 0.06));
+    border: 1px solid rgba(16, 185, 129, 0.25);
+    border-radius: 22px;
+    padding: 24px;
+}
+
+.academic-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.marks-badge {
+    background: rgba(16, 185, 129, 0.15);
+    border: 1px solid rgba(16, 185, 129, 0.4);
+    color: var(--accent-green);
+    padding: 6px 14px;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.academic-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 14px;
+}
+
+.academic-item:last-child { margin-bottom: 0; }
+
+.academic-item i {
+    color: var(--accent-cyan);
+    margin-top: 4px;
+    font-size: 16px;
+}
+
+.divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border-card), transparent);
+    margin: 20px 0;
+}
+
+.social-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+}
+
+@media (max-width: 600px) {
+    .social-grid { grid-template-columns: 1fr; }
+}
+
+.btn-social {
+    padding: 16px 18px;
+    border-radius: 18px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-card);
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text-primary);
+}
+
+.btn-social:hover {
+    transform: translateY(-3px);
+    border-color: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.btn-social i { font-size: 20px; width: 24px; text-align: center; }
+
+.btn-instagram:hover { color: #e1306c; border-color: rgba(225, 48, 108, 0.5); }
+.btn-snapchat:hover { color: #fffc00; border-color: rgba(255, 252, 0, 0.5); }
+.btn-tiktok:hover { color: #25f4ee; border-color: rgba(37, 244, 238, 0.5); }
+.btn-facebook:hover { color: #1877f2; border-color: rgba(24, 119, 242, 0.5); }
+.btn-threads:hover { color: #ffffff; border-color: rgba(255, 255, 255, 0.5); }
+.btn-discord:hover { color: #5865f2; border-color: rgba(88, 101, 242, 0.5); }
+.btn-email:hover { color: #ea4335; border-color: rgba(234, 67, 53, 0.5); }
+
+.btn-whatsapp { grid-column: span 2; background: linear-gradient(135deg, #25d366, #128c7e); border: none; }
+.btn-whatsapp:hover { color: #fff; box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4); }
+
+@media (max-width: 600px) {
+    .btn-whatsapp { grid-column: span 1; }
+}
+
+footer {
+    text-align: center;
+    margin-top: 35px;
+    font-size: 13px;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+</style>
+</head>
+<body>
+
+<div class="bg-glow-1"></div>
+<div class="bg-glow-2"></div>
+
+<div class="portfolio-container">
+
+    <!-- Step 1: Header / Welcome -->
+    <div class="profile-header">
+        <div class="badge">
+            <i class="fa-solid fa-sparkles"></i> Welcome to my first website
+        </div>
+        <h1 class="title">Shaaf Ahmed</h1>
+        <div class="subtitle-pill">
+            <i class="fa-solid fa-book-quran"></i> Hafiz-e-Quran &nbsp;•&nbsp; 1st Year ICS Student
+        </div>
+    </div>
+
+    <!-- Step 2: Personal Details -->
+    <div class="step-section">
+        <div class="section-title">
+            <i class="fa-solid fa-user-circle"></i> 01. Personal Details
+        </div>
+
+        <div class="grid-cards">
+            <div class="info-card">
+                <div class="icon-box"><i class="fa-solid fa-mosque"></i></div>
+                <div class="info-details">
+                    <span class="label">Religion</span>
+                    <span class="val">Muslim</span>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <div class="icon-box"><i class="fa-solid fa-location-dot"></i></div>
+                <div class="info-details">
+                    <span class="label">Lives In</span>
+                    <span class="val">Daultala</span>
+                </div>
+            </div>
+
+            <div class="info-card" style="grid-column: span 2;">
+                <div class="icon-box"><i class="fa-solid fa-person-cricket"></i></div>
+                <div class="info-details">
+                    <span class="label">Fav Sport</span>
+                    <span class="val">Cricket</span>
+                </div>
+            </div>
+
+            <div class="info-card" style="grid-column: span 2;">
+                <div class="icon-box"><i class="fa-solid fa-users"></i></div>
+                <div class="info-details">
+                    <span class="label">Family</span>
+                    <span class="val">Father, Mother, 2 Brothers & 1 Sister</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Step 3: Academic Background -->
+    <div class="step-section">
+        <div class="section-title">
+            <i class="fa-solid fa-graduation-cap"></i> 02. Academic Background
+        </div>
+
+        <div class="academic-card">
+            <div class="academic-header">
+                <span class="val" style="font-size: 18px;">Matriculation</span>
+                <span class="marks-badge"><i class="fa-solid fa-trophy"></i> 1118 / 1200</span>
+            </div>
+            <div class="academic-item">
+                <i class="fa-solid fa-school"></i>
+                <div>
+                    <span class="label">School</span>
+                    <span class="val" style="font-size: 16px;">Dar-e-Arqam School, Daultala</span>
+                </div>
+            </div>
+            <div class="academic-item" style="margin-top: 12px;">
+                <i class="fa-solid fa-laptop-code"></i>
+                <div>
+                    <span class="label">Group</span>
+                    <span class="val" style="font-size: 16px;">Computer Science Group</span>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="academic-header" style="margin-bottom: 10px;">
+                <span class="val" style="font-size: 18px;">Intermediate (1st Year)</span>
+            </div>
+            <div class="academic-item">
+                <i class="fa-solid fa-building-columns"></i>
+                <div>
+                    <span class="label">College</span>
+                    <span class="val" style="font-size: 16px;">Wings Group of Colleges, Daultala</span>
+                </div>
+            </div>
+            <div class="academic-item" style="margin-top: 12px;">
+                <i class="fa-solid fa-microchip"></i>
+                <div>
+                    <span class="label">Field of Study</span>
+                    <span class="val" style="font-size: 16px;">Intermediate in Computer Science (ICS)</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Step 4: Connect & Social Links -->
+    <div class="step-section" style="margin-bottom: 0;">
+        <div class="section-title">
+            <i class="fa-solid fa-share-nodes"></i> 03. Connect With Me
+        </div>
+
+        <div class="social-grid">
+            <a href="https://www.instagram.com/shaaf___24" target="_blank" class="btn-social btn-instagram">
+                <i class="fa-brands fa-instagram"></i> Instagram (@shaaf___24)
+            </a>
+            <a href="https://www.snapchat.com/add/shaaf_2411" target="_blank" class="btn-social btn-snapchat">
+                <i class="fa-brands fa-snapchat"></i> Snapchat (shaaf_2411)
+            </a>
+            <a href="https://www.tiktok.com/@shaaf_.24" target="_blank" class="btn-social btn-tiktok">
+                <i class="fa-brands fa-tiktok"></i> TikTok (@shaaf_.24)
+            </a>
+            <a href="https://facebook.com" target="_blank" class="btn-social btn-facebook">
+                <i class="fa-brands fa-facebook"></i> Facebook (Shaaf Ahmed)
+            </a>
+            <a href="https://www.threads.net/@shaaf_.24" target="_blank" class="btn-social btn-threads">
+                <i class="fa-brands fa-threads"></i> Threads (@shaaf_.24)
+            </a>
+            <a href="https://discord.com" target="_blank" class="btn-social btn-discord">
+                <i class="fa-brands fa-discord"></i> Discord (shaafahmed)
+            </a>
+            <a href="mailto:hafizshaafahmed@gmail.com" class="btn-social btn-email">
+                <i class="fa-solid fa-envelope"></i> Email: hafizshaafahmed@gmail.com
+            </a>
+            <a href="https://wa.me/923476524007" target="_blank" class="btn-social btn-whatsapp">
+                <i class="fa-brands fa-whatsapp"></i> WhatsApp: 03476524007
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        © 2026 Shaaf Ahmed • All Rights Reserved
+    </footer>
+
+</div>
+
+</body>
+  </html>
+  
